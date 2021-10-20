@@ -1,0 +1,16 @@
+C:\Users\Admin\Documents\TDPProjects\BackEndProject\SalesApplication\SalesApplication\bin\Debug\net5.0\SalesApplication.exe
+C:\Users\Admin\Documents\TDPProjects\BackEndProject\SalesApplication\SalesApplication\bin\Debug\net5.0\SalesApplication.deps.json
+C:\Users\Admin\Documents\TDPProjects\BackEndProject\SalesApplication\SalesApplication\bin\Debug\net5.0\SalesApplication.runtimeconfig.json
+C:\Users\Admin\Documents\TDPProjects\BackEndProject\SalesApplication\SalesApplication\bin\Debug\net5.0\SalesApplication.runtimeconfig.dev.json
+C:\Users\Admin\Documents\TDPProjects\BackEndProject\SalesApplication\SalesApplication\bin\Debug\net5.0\SalesApplication.dll
+C:\Users\Admin\Documents\TDPProjects\BackEndProject\SalesApplication\SalesApplication\bin\Debug\net5.0\ref\SalesApplication.dll
+C:\Users\Admin\Documents\TDPProjects\BackEndProject\SalesApplication\SalesApplication\bin\Debug\net5.0\SalesApplication.pdb
+C:\Users\Admin\Documents\TDPProjects\BackEndProject\SalesApplication\SalesApplication\obj\Debug\net5.0\SalesApplication.csprojAssemblyReference.cache
+C:\Users\Admin\Documents\TDPProjects\BackEndProject\SalesApplication\SalesApplication\obj\Debug\net5.0\SalesApplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Documents\TDPProjects\BackEndProject\SalesApplication\SalesApplication\obj\Debug\net5.0\SalesApplication.AssemblyInfoInputs.cache
+C:\Users\Admin\Documents\TDPProjects\BackEndProject\SalesApplication\SalesApplication\obj\Debug\net5.0\SalesApplication.AssemblyInfo.cs
+C:\Users\Admin\Documents\TDPProjects\BackEndProject\SalesApplication\SalesApplication\obj\Debug\net5.0\SalesApplication.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\TDPProjects\BackEndProject\SalesApplication\SalesApplication\obj\Debug\net5.0\SalesApplication.dll
+C:\Users\Admin\Documents\TDPProjects\BackEndProject\SalesApplication\SalesApplication\obj\Debug\net5.0\ref\SalesApplication.dll
+C:\Users\Admin\Documents\TDPProjects\BackEndProject\SalesApplication\SalesApplication\obj\Debug\net5.0\SalesApplication.pdb
+C:\Users\Admin\Documents\TDPProjects\BackEndProject\SalesApplication\SalesApplication\obj\Debug\net5.0\SalesApplication.genruntimeconfig.cache
