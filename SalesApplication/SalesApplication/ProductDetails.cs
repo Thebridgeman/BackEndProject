@@ -8,7 +8,7 @@ namespace SalesApplication
 {
     class ProductDetails
     {
-        public void CreateItem()
+        public static void CreateItem()
         {
             //Console.WriteLine(" What is the Sale ID");
             //string ID= Console.ReadLine();
@@ -23,12 +23,10 @@ namespace SalesApplication
             Console.WriteLine("Individual Item Price");
             float price = float.Parse (Console.ReadLine());
 
-            DateTime SaleDate;
+            
             Console.WriteLine("Sale Date format MM/DD/YYYY");
-            SaleDate = DateTime.Parse(Console.ReadLine());
-            
-
-            
+            string saleDate = Console.ReadLine();
+   
         }
 
     }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
+using static SalesApplication.ProductDetails; 
 
 namespace SalesApplication
 {
@@ -15,6 +17,14 @@ namespace SalesApplication
         }
         static void Main(string[] args)
         {
+
+            MySqlConnection connection = MySqlUtils.GetConnection();
+
+            connection.Open();
+
+            connection.Dispose();
+
+
             string s = " Sales ";
             Console.SetCursorPosition((Console.WindowWidth - s.Length) / 2, Console.CursorTop);
             Console.WriteLine(s);
@@ -39,7 +49,7 @@ namespace SalesApplication
                 switch (input2)
                 {
                     case "1":
-                        // create 
+                        Create();
                         break;
 
                     case "2":
@@ -61,13 +71,12 @@ namespace SalesApplication
                 Console.WriteLine("Invalid Input");
             }
         }
-
+        // get input from user and store them
         public static void Create()
         {
-            // get input from user and store them
+            ProductDetails.CreateItem();
         }
-
+  
     }
-    
 
 }
