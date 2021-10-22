@@ -6,26 +6,18 @@ using System.Threading.Tasks;
 
 namespace SalesApplication
 {
-    class ProductDetails
+    public class ProductDetails
     {
-        public static void CreateItem()
+
+
+        public int ID { get; set; }
+        public string Name { get; set; }
+
+        public override string ToString()
         {
-            //Console.WriteLine(" What is the Sale ID");
-            //string ID= Console.ReadLine();
-
-            Console.WriteLine("Product Name");
-            string name = Console.ReadLine();
-
-            Console.WriteLine("Sale Quantity");
-            int quantity = Int32.Parse(Console.ReadLine());
-
-
-            Console.WriteLine("Individual Item Price");
-            float price = float.Parse (Console.ReadLine());
-
-            DateTime dateTime = DateTime.Now;
-   
+            return $"ProductDetails[ID={ID}, Name={Name}]";
         }
 
     }
 }
+

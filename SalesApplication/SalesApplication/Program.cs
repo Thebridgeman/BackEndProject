@@ -1,91 +1,101 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using static SalesApplication.ProductDetails; 
+using static SalesApplication.ProductDetails;
 
 namespace SalesApplication
 {
-    class Program
+    class ProductMenu
     {
-        public enum CrudOptions
+
+        //private readonly ProductController productControllor;
+        //public ProductMenu(ProductController productControllor)
+        //{
+        //    this.productControllor p productControllor;
+        //}
+
+        public enum MenuOptions
 
         {
             CREATE,
-            READ,
             UPDATE,
             DELETE,
-            QUIT
+            //QUIT
         }
-        static void Main(string[] args)
+        public void PrintMenu()
         {
+            Array values = Enum.GetValues(typeof(MenuOptions));
 
-            MySqlConnection connection = MySqlUtils.GetConnection();
+            Console.WriteLine("==== Menu ====");
+            foreach (var value in values)
+            {
+                Console.WriteLine(value);
+            }
 
-            connection.Open();
-            bool connectionOpen = connection.Ping();
+            Console.WriteLine("=== ====== ===");
 
-            Console.WriteLine($@"\nConnection status: {connection.State}
+        }
+        public void InteractiveLoop()
+        {
+            bool inMenu = true;
+
+            while (inMenu)
+            {
+                Console.Clear();
+                PrintMenu();
+                string input = Console.ReadLine();
+                bool b = Enum.TryParse(input, true, out MenuOptions menuOptions);
+
+                if (b == false)
+                {
+                    Console.WriteLine("Invalid input");
+                    continue;
+                }
+
+                switch (menuOptions)
+                {
+                    case
+                        MenuOptions.CREATE:
+                        productController.Create();
+                        break;
+
+                    case MenuOptions.UPDATE:
+                        productController.Update();
+                        break;
+
+                    case MenuOptions.DELETE:
+                        productController.Delete();
+                        break;
+                }
+
+                Console.WriteLine("Press any key to procede..");
+                Console.ReadKey();
+            }
+        }
+    }
+    static void Main(string[] args)
+    {
+
+        MySqlConnection connection = MySqlUtils.GetConnection();
+
+        connection.Open();
+        bool connectionOpen = connection.Ping();
+
+        Console.WriteLine($@"\nConnection status: {connection.State}
                 Ping successfull: {connectionOpen}
                 DB Version: {connection.ServerVersion}
                 Connection String: {connection.ConnectionString}");
 
-            //connection.Dispose();
+        //connection.Dispose();
 
-            MySqlUtils.RunSchema(Environment.CurrentDirectory + @"\static\Schema.sql", connection);
+        MySqlUtils.RunSchema(Environment.CurrentDirectory + @"\static\Schema.sql", connection);
 
-
-
-            string s = " Sales ";
-            Console.SetCursorPosition((Console.WindowWidth - s.Length) / 2, Console.CursorTop);
-            Console.WriteLine(s);
-
-            Console.WriteLine(" ===== Menu ===== ");
-            Console.WriteLine("1. Make an Entry");
-            Console.WriteLine("2. Sales Reports");
-            Console.WriteLine(" === ======= === ");
-
-       
-            string input = Console.ReadLine();
-
-            if(input == "1") {
-                // open CRUD menu
-
-                Console.WriteLine(" 1. Create ");
-                Console.WriteLine(" 2. Update ");
-                Console.WriteLine(" 3. Delete ");
-
-                string input2 = Console.ReadLine();
-
-                switch (input2)
-                {
-                    case "1":
-                        Create();
-                        break;
-
-                    case "2":
-                        // Update 
-                        break;
-
-                    case "3":
-                        // delete
-                        break;
-
-                }
-            }
-            else if(input == "2")
-            {
-                // view reports
-            }
-            else
-            {
-                Console.WriteLine("Invalid Input");
-            }
-        }
-        // get input from user and store them
-        public static void Create()
-        {
-            ProductDetails.CreateItem();
-        }
-  
+        string s = " Sales ";
+        Console.SetCursorPosition((Console.WindowWidth - s.Length) / 2, Console.CursorTop);
+        Console.WriteLine(s);
     }
-
 }
+
+
+
+
+     
