@@ -6,6 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Static\Schema.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Static\Schema.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.27" />
   </ItemGroup>
 

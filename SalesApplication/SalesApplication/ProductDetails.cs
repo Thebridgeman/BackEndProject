@@ -23,9 +23,7 @@ namespace SalesApplication
             Console.WriteLine("Individual Item Price");
             float price = float.Parse (Console.ReadLine());
 
-            
-            Console.WriteLine("Sale Date format MM/DD/YYYY");
-            string saleDate = Console.ReadLine();
+            DateTime dateTime = DateTime.Now;
    
         }
 

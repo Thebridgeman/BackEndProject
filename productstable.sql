@@ -11,7 +11,7 @@ primary key(sale_id)
 );
 
 select * from sales;
-/*drop table sales;*/
+drop table sales;
 
 /* products sold in a year*/
 select * from sales where year(sale_date) = 2021;

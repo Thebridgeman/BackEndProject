@@ -21,8 +21,17 @@ namespace SalesApplication
             MySqlConnection connection = MySqlUtils.GetConnection();
 
             connection.Open();
+            bool connectionOpen = connection.Ping();
 
-            connection.Dispose();
+            Console.WriteLine($@"\nConnection status: {connection.State}
+                Ping successfull: {connectionOpen}
+                DB Version: {connection.ServerVersion}
+                Connection String: {connection.ConnectionString}");
+
+            //connection.Dispose();
+
+            MySqlUtils.RunSchema(Environment.CurrentDirectory + @"\static\Schema.sql", connection);
+
 
 
             string s = " Sales ";
