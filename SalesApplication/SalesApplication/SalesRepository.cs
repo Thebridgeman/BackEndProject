@@ -57,10 +57,10 @@ namespace SalesApplication
             return product;
         }
 
-        public void Delete(int id)
+        public void Delete(long id)
         {
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = $"DELETE FROM productDetails WHERE id={id}";
+            command.CommandText = $"DELETE FROM sales WHERE sale_id={id}";
 
             connection.Open();
             command.ExecuteNonQuery();

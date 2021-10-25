@@ -63,11 +63,11 @@ namespace SalesApplication
                         break;
                     
                     case MenuOptions.UPDATE:
-                        productController.Update();
+                        productController.Update(connection);
                         break;
 
                     case MenuOptions.DELETE:
-                        productController.Delete();
+                        productController.Delete(connection);
                         break;
 
                     case MenuOptions.QUIT:

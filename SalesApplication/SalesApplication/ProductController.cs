@@ -13,7 +13,7 @@ namespace SalesApplication
 
         public productController(ProductServices productServices)
         {
-      
+
             this.productServices = productServices;
         }
 
@@ -48,29 +48,24 @@ namespace SalesApplication
             }
         }
 
-        internal static void Delete()
+        internal static void Delete(MySqlConnection connection)
         {
             Console.WriteLine("Enter product id");
             Console.Write("> ");
             string input = Console.ReadLine();
-            bool b = int.TryParse(input, out int id);
+            bool b = long.TryParse(input, out long id);
 
-            //if (b)
-            //{
-            //    try
-            //    {
-            //        productServices.Delete(id);
-            //    }
-            //    catch(ItemNotFoundException e)
-            //    {
-            //        Console.WriteLine($" Product with ID {id} doesn't exist");
-                }
-
-        internal static void Update()
+            if (b)
+            {
+                
+                    SalesRepository SR = new SalesRepository(connection);
+                    SR.Delete(id);
+            }
+        }
+        internal static void Update(MySqlConnection connection)
         {
             throw new NotImplementedException();
         }
+
     }
-        }
-//    }
-//}
+}
