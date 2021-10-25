@@ -30,7 +30,7 @@ namespace SalesApplication
 
             DateTime dateTime = DateTime.Now;
 
-            ProductDetails toCreate = new ProductDetails() { Name = name };
+            ProductDetails toCreate = new ProductDetails() { Name = name, SaleQuantity = quantity, IndividualItemPrice = price, datetime = dateTime };
 
             SalesRepository SR = new SalesRepository(connection);
 

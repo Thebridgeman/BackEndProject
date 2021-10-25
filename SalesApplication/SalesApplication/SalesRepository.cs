@@ -22,6 +22,8 @@ namespace SalesApplication
             MySqlCommand command = connection.CreateCommand();
             command.CommandText = "Select * FROM sales";
 
+            connection.Open();
+
             MySqlDataReader reader = command.ExecuteReader();
 
             IEnumerable<ProductDetails> productDetails = ProductDetailsFromReader(reader);
@@ -34,13 +36,17 @@ namespace SalesApplication
         {
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = $"INSERT INTO item(name) VALUES('{toCreate.Name}')";
+            string sqlFormattedDate = toCreate.datetime.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            command.CommandText = $"INSERT INTO sales(product_name, sale_quantity, item_price, sale_date) VALUES('{toCreate.Name}', '{toCreate.SaleQuantity}', '{toCreate.IndividualItemPrice}', '{sqlFormattedDate}')";
 
-            //connection.Open();
+            connection.Open();
 
-            //command.ExecuteNonQuery();  ExecuteNonQuery() - use it for CREATE, INSERT, DELETE or any modification
+            command.ExecuteNonQuery(); 
+            
+            //ExecuteNonQuery() - use it for CREATE, INSERT, DELETE or any modification
 
-            connection.Close();
+
+           connection.Close();
 
             ProductDetails product = new ProductDetails();
 

@@ -91,9 +91,9 @@ namespace SalesApplication
                 DB Version: {connection.ServerVersion}
                 Connection String: {connection.ConnectionString}");
 
-            //connection.Dispose();
-
             MySqlUtils.RunSchema(Environment.CurrentDirectory + @"\static\Schema.sql", connection);
+
+            connection.Close();
 
             string s = " Sales ";
             Console.SetCursorPosition((Console.WindowWidth - s.Length) / 2, Console.CursorTop);
