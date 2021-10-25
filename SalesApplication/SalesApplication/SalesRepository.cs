@@ -36,9 +36,9 @@ namespace SalesApplication
 
             command.CommandText = $"INSERT INTO item(name) VALUES('{toCreate.Name}')";
 
-            connection.Open();
+            //connection.Open();
 
-            command.ExecuteNonQuery(); // ExecuteNonQuery() - use it for CREATE, INSERT, DELETE or any modification
+            //command.ExecuteNonQuery();  ExecuteNonQuery() - use it for CREATE, INSERT, DELETE or any modification
 
             connection.Close();
 
