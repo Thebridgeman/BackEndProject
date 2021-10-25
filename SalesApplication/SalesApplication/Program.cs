@@ -17,9 +17,10 @@ namespace SalesApplication
 
         {
             CREATE,
+            READ,
             UPDATE,
             DELETE,
-            //QUIT
+            QUIT
         }
         public static void PrintMenu()
         {
@@ -53,11 +54,14 @@ namespace SalesApplication
 
                 switch (menuOptions)
                 {
-                    case
-                        MenuOptions.CREATE:
+                    case MenuOptions.CREATE:
                         productController.Create(connection);
                         break;
 
+                    case MenuOptions.READ:
+                        productController.Read(connection);
+                        break;
+                    
                     case MenuOptions.UPDATE:
                         productController.Update();
                         break;
@@ -66,12 +70,20 @@ namespace SalesApplication
                         productController.Delete();
                         break;
 
-                    //case MenuOptions.Quit:
-                    //    inMenu = false;
-                    //    break;
+                    case MenuOptions.QUIT:
+                        inMenu = false;
+                        
+                        break;
                 }
-
-                Console.WriteLine("Press any key to procede..");
+                if (inMenu != false)
+                {
+                    Console.WriteLine("Press any key to continue");
+                }
+                else
+                {
+                    Console.WriteLine("Press any key to exit");
+                }
+                
                 Console.ReadKey();
             }
         }

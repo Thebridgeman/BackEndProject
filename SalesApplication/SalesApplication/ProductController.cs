@@ -37,9 +37,10 @@ namespace SalesApplication
             ProductDetails newProductDetails = SR.Create(toCreate);
             Console.WriteLine($"Created new Product: {newProductDetails}");
         }
-        internal void Read()
+        internal static void Read(MySqlConnection connection)
         {
-            IEnumerable<ProductDetails> productDetailsInDb = productServices.Read();
+            SalesRepository SR = new SalesRepository(connection);
+            IEnumerable<ProductDetails> productDetailsInDb = SR.Read();
 
             foreach (var productDetails in productDetailsInDb)
             {

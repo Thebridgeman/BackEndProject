@@ -10,7 +10,7 @@ namespace SalesApplication
     {
 
 
-        public int ID { get; set; }
+        public long ID { get; set; }
         public string Name { get; set; }
         public int SaleQuantity { get; set; }
         public float IndividualItemPrice { get; set; }

@@ -69,16 +69,20 @@ namespace SalesApplication
 
         public IList<ProductDetails> ProductDetailsFromReader(MySqlDataReader reader)
         {
-            IList<ProductDetails> productDetails = new List<ProductDetails>();
-            while (reader.Read())
-            {
-                int id = reader.GetFieldValue < int>("id");
-                string name = reader.GetFieldValue<string>("name");
+            IList<ProductDetails> products = new List<ProductDetails>();
 
-                ProductDetails productDetils = new ProductDetails() { ID = id, Name = name };
-                productDetails.Add(productDetils);
+            while (reader.Read())
+
+            {
+                long id = reader.GetFieldValue<long>("sale_id");
+
+                string name = reader.GetFieldValue<string>("product_name");
+
+                ProductDetails product = new ProductDetails() { ID = id, Name = name };
+
+                products.Add(product);
             }
-            return productDetails;
+            return products;
         }
 
     }
