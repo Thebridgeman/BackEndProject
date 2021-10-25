@@ -37,15 +37,13 @@ namespace SalesApplication
             MySqlCommand command = connection.CreateCommand();
 
             string sqlFormattedDate = toCreate.datetime.ToString("yyyy-MM-dd HH:mm:ss.fff");
-            command.CommandText = $"INSERT INTO sales(product_name, sale_quantity, item_price, sale_date) VALUES('{toCreate.Name}', '{toCreate.SaleQuantity}', '{toCreate.IndividualItemPrice}', '{sqlFormattedDate}')";
+            command.CommandText = $"INSERT INTO sales(product_name, sale_quantity, item_price, sale_date) " +
+                $"VALUES('{toCreate.Name}', {toCreate.SaleQuantity}, {toCreate.IndividualItemPrice}, '{sqlFormattedDate}')";
 
             connection.Open();
 
             command.ExecuteNonQuery(); 
             
-            //ExecuteNonQuery() - use it for CREATE, INSERT, DELETE or any modification
-
-
            connection.Close();
 
             ProductDetails product = new ProductDetails();
@@ -64,7 +62,7 @@ namespace SalesApplication
 
             connection.Open();
             command.ExecuteNonQuery();
-            connection.Close();
+            connection.Close(); 
         }
 
         public IList<ProductDetails> ProductDetailsFromReader(MySqlDataReader reader)
