@@ -28,15 +28,6 @@ namespace SalesApplication
         {
             return salesRepository.Read();
         }
-
-        internal void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal static ProductDetails Create(object toCreate)
-        {
-            throw new NotImplementedException();
-        }
+ 
     }
 }

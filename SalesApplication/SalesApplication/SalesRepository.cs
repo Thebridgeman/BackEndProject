@@ -17,23 +17,38 @@ namespace SalesApplication
             connection = mySqlConnection;
         }
 
+        public IEnumerable<ProductDetails> Read()
+        {
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = "Select * FROM sales";
+
+            MySqlDataReader reader = command.ExecuteReader();
+
+            IEnumerable<ProductDetails> productDetails = ProductDetailsFromReader(reader);
+            connection.Close();
+
+            return productDetails;
+        }
+
         public ProductDetails Create(ProductDetails toCreate)
         {
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "Select * FROM productstable";
+
+            command.CommandText = $"INSERT INTO item(name) VALUES('{toCreate.Name}')";
 
             connection.Open();
-            MySqlDataReader reader = command.ExecuteReader();
 
-            IList<ProductDetails> productDetails = ProductDetailsFromReader(reader);
+            command.ExecuteNonQuery(); // ExecuteNonQuery() - use it for CREATE, INSERT, DELETE or any modification
+
             connection.Close();
 
-            return (ProductDetails)productDetails;
-        }
+            ProductDetails product = new ProductDetails();
 
-        internal IEnumerable<ProductDetails> Read()
-        {
-            throw new NotImplementedException();
+            product.ID = (int)command.LastInsertedId;
+
+            product.Name = toCreate.Name;
+
+            return product;
         }
 
         public void Delete(int id)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace SalesApplication
             this.productServices = productServices;
         }
 
-        internal static void Create()
+        internal static void Create(MySqlConnection connection)
         {
             Console.WriteLine("Product Name");
             string name = Console.ReadLine();
@@ -31,7 +32,9 @@ namespace SalesApplication
 
             ProductDetails toCreate = new ProductDetails() { Name = name };
 
-            ProductDetails newProductDetails = ProductServices.Create(toCreate);
+            SalesRepository SR = new SalesRepository(connection);
+
+            ProductDetails newProductDetails = SR.Create(toCreate);
             Console.WriteLine($"Created new Product: {newProductDetails}");
         }
         internal void Read()

@@ -21,7 +21,7 @@ namespace SalesApplication
             DELETE,
             //QUIT
         }
-        public void PrintMenu()
+        public static void PrintMenu()
         {
             Array values = Enum.GetValues(typeof(MenuOptions));
 
@@ -34,7 +34,7 @@ namespace SalesApplication
             Console.WriteLine("=== ====== ===");
 
         }
-        public void InteractiveLoop()
+        public static void InteractiveLoop(MySqlConnection connection)
         {
             bool inMenu = true;
 
@@ -55,7 +55,7 @@ namespace SalesApplication
                 {
                     case
                         MenuOptions.CREATE:
-                        productController.Create();
+                        productController.Create(connection);
                         break;
 
                     case MenuOptions.UPDATE:
@@ -65,6 +65,10 @@ namespace SalesApplication
                     case MenuOptions.DELETE:
                         productController.Delete();
                         break;
+
+                    //case MenuOptions.Quit:
+                    //    inMenu = false;
+                    //    break;
                 }
 
                 Console.WriteLine("Press any key to procede..");
@@ -72,29 +76,32 @@ namespace SalesApplication
             }
         }
     }
-    static void Main(string[] args)
+    class Program
     {
+        static void Main(string[] args)
+        {
 
-        MySqlConnection connection = MySqlUtils.GetConnection();
+            MySqlConnection connection = MySqlUtils.GetConnection();
 
-        connection.Open();
-        bool connectionOpen = connection.Ping();
+            connection.Open();
+            bool connectionOpen = connection.Ping();
 
-        Console.WriteLine($@"\nConnection status: {connection.State}
+            Console.WriteLine($@"\nConnection status: {connection.State}
                 Ping successfull: {connectionOpen}
                 DB Version: {connection.ServerVersion}
                 Connection String: {connection.ConnectionString}");
 
-        //connection.Dispose();
+            //connection.Dispose();
 
-        MySqlUtils.RunSchema(Environment.CurrentDirectory + @"\static\Schema.sql", connection);
+            MySqlUtils.RunSchema(Environment.CurrentDirectory + @"\static\Schema.sql", connection);
 
-        string s = " Sales ";
-        Console.SetCursorPosition((Console.WindowWidth - s.Length) / 2, Console.CursorTop);
-        Console.WriteLine(s);
+            string s = " Sales ";
+            Console.SetCursorPosition((Console.WindowWidth - s.Length) / 2, Console.CursorTop);
+            Console.WriteLine(s);
+            ProductMenu.InteractiveLoop(connection);
+        }
     }
 }
-
 
 
 
