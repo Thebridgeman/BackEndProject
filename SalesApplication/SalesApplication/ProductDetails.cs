@@ -18,9 +18,8 @@ namespace SalesApplication
 
         public override string ToString()
         {
-            return $"ProductDetails[ID={this.ID}, Name={this.Name}]";
+            return $"ProductDetails[ID={this.ID}, Name={this.Name}, SaleDate={this.datetime}";
         }
-
     }
 }
 

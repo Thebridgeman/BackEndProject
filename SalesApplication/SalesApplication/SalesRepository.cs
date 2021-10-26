@@ -34,13 +34,30 @@ namespace SalesApplication
 
         public ProductDetails Create(ProductDetails toCreate)
         {
+            connection.Open();
+
             MySqlCommand command = connection.CreateCommand();
 
             string sqlFormattedDate = toCreate.datetime.ToString("yyyy-MM-dd HH:mm:ss.fff");
             command.CommandText = $"INSERT INTO sales(product_name, sale_quantity, item_price, sale_date) " +
-                $"VALUES('{toCreate.Name}', {toCreate.SaleQuantity}, {toCreate.IndividualItemPrice}, '{sqlFormattedDate}')";
+                $"VALUES(@Name, @SaleQuantity, @IndividualItemPrice, @sqlFormattedDate)";
 
-            connection.Open();
+            MySqlParameter nameParam = new MySqlParameter("@Name", MySqlDbType.String);
+            MySqlParameter quantityParam = new MySqlParameter("@SaleQuantity", MySqlDbType.Int32);
+            MySqlParameter priceParam = new MySqlParameter("@IndividualItemPrice", MySqlDbType.Decimal);
+            MySqlParameter dateParam = new MySqlParameter("@sqlFormattedDate", MySqlDbType.DateTime);
+
+            nameParam.Value = toCreate.Name;
+            quantityParam.Value = toCreate.SaleQuantity;
+            priceParam.Value = toCreate.IndividualItemPrice;
+            dateParam.Value = toCreate.datetime;
+
+            command.Parameters.Add(nameParam);
+            command.Parameters.Add(quantityParam);
+            command.Parameters.Add(priceParam);
+            command.Parameters.Add(dateParam);
+
+            command.Prepare();
 
             command.ExecuteNonQuery(); 
             
