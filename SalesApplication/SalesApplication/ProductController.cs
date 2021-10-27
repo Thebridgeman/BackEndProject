@@ -66,6 +66,5 @@ namespace SalesApplication
         {
             throw new NotImplementedException();
         }
-
     }
 }

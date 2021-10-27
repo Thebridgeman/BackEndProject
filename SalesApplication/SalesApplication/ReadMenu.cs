@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,9 @@ namespace SalesApplication
 {
     class ReadMenu
     {
-       public static void ReadOptions()
+       public static void ReadOptions(MySqlConnection connection)
         {
+
             Console.WriteLine("1. Sales By Year");
             Console.WriteLine("2. Sales By Month");
             Console.WriteLine("3. Sales Total by Year");
@@ -22,31 +24,31 @@ namespace SalesApplication
                 case "1":
                     Console.WriteLine("Enter a year");
                     string year = Console.ReadLine();
-                    //call sales by year function
+                    ReadFunctionsController.SalesInYear(connection, year);
                     break;
+
                 case "2":
                     Console.WriteLine("Enter a month");
                     string month = Console.ReadLine();
-                    //call sales by month function
+                    ReadFunctionsController.SalesInMonth(connection, month);
                     break; 
 
                 case "3":
                     Console.WriteLine("Enter a year");
                     string sumofyear = Console.ReadLine();
-                    //call sales total by year function
+                    //rf.SumOfSalesInYear(sumofyear);
                     break;
 
                 case "4":
                     Console.WriteLine("Enter a year");
-                    string Monthofyear = Console.ReadLine();
+                    string yr = Console.ReadLine();
                     Console.WriteLine("Enter a month");
-                    string sumofmonth = Console.ReadLine();
-                    // call sales by month in a year function
+                    string mnth = Console.ReadLine();
+                    //rf.SalesInMonthOfYear(yr, mnth);
 
                     break;
             }
         }
-
 
 
 

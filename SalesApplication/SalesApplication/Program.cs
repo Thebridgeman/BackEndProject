@@ -17,7 +17,8 @@ namespace SalesApplication
 
         {
             CREATE,
-            READ,
+            READ_ALL,
+            READ_OPTIONS,
             UPDATE,
             DELETE,
             QUIT
@@ -52,16 +53,21 @@ namespace SalesApplication
                     continue;
                 }
 
+
                 switch (menuOptions)
                 {
                     case MenuOptions.CREATE:
                         productController.Create(connection);
                         break;
 
-                    case MenuOptions.READ:
+                    case MenuOptions.READ_ALL:
                         productController.Read(connection);
                         break;
-                    
+
+                    case MenuOptions.READ_OPTIONS:
+                        ReadMenu.ReadOptions(connection);
+                        break;
+
                     case MenuOptions.UPDATE:
                         productController.Update(connection);
                         break;

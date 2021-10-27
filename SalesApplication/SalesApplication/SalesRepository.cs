@@ -93,14 +93,53 @@ namespace SalesApplication
 
                 string name = reader.GetFieldValue<string>("product_name");
 
+                int quantity = reader.GetFieldValue<int>("sale_quantity");
+
+                float price = reader.GetFieldValue<float>("item_price");
+
+                DateTime saledate = reader.GetFieldValue<DateTime>("saledate");
+
+
                 
 
-               ProductDetails product = new ProductDetails() { ID = id, Name = name };
+               ProductDetails product = new ProductDetails() { ID = id, Name = name, SaleQuantity = quantity, IndividualItemPrice = price, datetime = saledate };
 
                 products.Add(product);
             }
             return products;
         }
+
+        // Read Functions
+
+        //public void SalesInYear(string year)
+        //{
+        //    MySqlCommand command = connection.CreateCommand();
+        //    command.CommandText = "Select * FROM sales";
+
+        //    connection.Open();
+
+        //    MySqlDataReader reader = command.ExecuteReader();
+
+        //    IEnumerable<ProductDetails> productDetails = ProductDetailsFromReader(reader);
+        //    connection.Close();
+
+        //    return productDetails;
+        //}
+
+        //public static void SalesInMonth(string month)
+        //{
+
+        //}
+
+        //public static void SumOfSalesInYear(string year)
+        //{
+
+        //}
+
+        //public static void SalesInMonthOfYear(string year, string month)
+        //{
+
+        //}
 
     }
 }
