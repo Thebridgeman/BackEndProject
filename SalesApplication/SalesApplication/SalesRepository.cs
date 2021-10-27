@@ -44,7 +44,7 @@ namespace SalesApplication
 
             MySqlParameter nameParam = new MySqlParameter("@Name", MySqlDbType.String);
             MySqlParameter quantityParam = new MySqlParameter("@SaleQuantity", MySqlDbType.Int32);
-            MySqlParameter priceParam = new MySqlParameter("@IndividualItemPrice", MySqlDbType.Decimal);
+            MySqlParameter priceParam = new MySqlParameter("@IndividualItemPrice", MySqlDbType.Float);
             MySqlParameter dateParam = new MySqlParameter("@sqlFormattedDate", MySqlDbType.DateTime);
 
             nameParam.Value = toCreate.Name;
@@ -93,7 +93,9 @@ namespace SalesApplication
 
                 string name = reader.GetFieldValue<string>("product_name");
 
-                ProductDetails product = new ProductDetails() { ID = id, Name = name };
+                
+
+               ProductDetails product = new ProductDetails() { ID = id, Name = name };
 
                 products.Add(product);
             }
