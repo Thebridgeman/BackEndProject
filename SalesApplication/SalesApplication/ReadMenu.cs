@@ -36,7 +36,7 @@ namespace SalesApplication
                 case "3":
                     Console.WriteLine("Enter a year");
                     string sumofyear = Console.ReadLine();
-                    //rf.SumOfSalesInYear(sumofyear);
+                    ReadFunctionsController.SumOfSalesInYear(connection, sumofyear);
                     break;
 
                 case "4":
@@ -44,7 +44,7 @@ namespace SalesApplication
                     string yr = Console.ReadLine();
                     Console.WriteLine("Enter a month");
                     string mnth = Console.ReadLine();
-                    //rf.SalesInMonthOfYear(yr, mnth);
+                    ReadFunctionsController.SalesInMonthOfYear(connection,yr, mnth);
 
                     break;
             }

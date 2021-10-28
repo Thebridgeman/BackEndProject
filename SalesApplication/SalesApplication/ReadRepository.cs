@@ -53,35 +53,45 @@ namespace SalesApplication
             return (productDetails);
         }
 
-        //public IEnumerable<ProductDetails> SumOfSalesInYear(string year)
-        //{
-        //    MySqlCommand command = connection.CreateCommand();
-        //    command.CommandText = $"select sum(item_price * sale_quantity) from sales where year(sale_date) = {year};";
+        public void SumOfSalesInYear(string year)
+        {
+            MySqlCommand command = connection.CreateCommand();
 
-        //    connection.Open();
+            command.CommandText = $"select sum(item_price) from sales where year(sale_date) = {year}";
 
-        //    MySqlDataReader reader = command.ExecuteReader();
+            command.CommandText = $"select sum(item_price * sale_quantity) from sales where year(sale_date) = {year};";
 
-            
-        //    connection.Close();
+            connection.Open();
 
-        //    return ()
-        //}
+            MySqlDataReader reader = command.ExecuteReader();
 
-        //public IEnumerable<ProductDetails> SalesInMonthOfYear(string year, string month)
-        //{
-        //    MySqlCommand command = connection.CreateCommand();
-        //    command.CommandText = $"Select * FROM sales where month(sale_date) = {month}";
 
-        //    connection.Open();
+            while (reader.Read())
+            {
+                Console.WriteLine(reader.GetValue(0));
+            }
+            connection.Close();
 
-        //    MySqlDataReader reader = command.ExecuteReader();
+           
+        }
 
-        //    IEnumerable<ProductDetails> productDetails = ProductDetailsFromReader(reader);
-        //    connection.Close();
+        public void SalesInMonthOfYear(string year, string month)
+        {
+            MySqlCommand command = connection.CreateCommand();
 
-        //    return (productDetails);
-        //}
+            command.CommandText = $"select sum(item_price) from sales where month(sale_date) = {month} and year(sale_date) = {year}";
+            command.CommandText = $"select sum(item_price* sale_quantity) from sales where month(sale_date) = {month} and year(sale_date) = {year}";
+
+            connection.Open();
+
+            MySqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Console.WriteLine(reader.GetValue(0));
+            }
+            connection.Close();
+        }
 
         public IList<ProductDetails> ProductDetailsFromReader(MySqlDataReader reader)
         {

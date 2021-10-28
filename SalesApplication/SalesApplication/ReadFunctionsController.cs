@@ -41,11 +41,14 @@ namespace SalesApplication
         internal static void SumOfSalesInYear(MySqlConnection connection, string sumofsalesinyear)
         {
             ReadRepository RR = new ReadRepository(connection);
-            IEnumerable<ProductDetails> productDetailsInDb = RR.SumOfSalesInYear(sumofsalesinyear);
-            
-            
-
+            RR.SumOfSalesInYear(sumofsalesinyear);
 
         }
+
+        internal static void SalesInMonthOfYear(MySqlConnection connection, string year, string month)
+        {
+            ReadRepository RR = new ReadRepository(connection);
+            RR.SalesInMonthOfYear(year, month);
+        }
+        }
     }
-}
