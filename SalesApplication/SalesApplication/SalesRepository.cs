@@ -121,38 +121,6 @@ namespace SalesApplication
             connection.Close();
         }
 
-        // Read Functions
-
-        //public void SalesInYear(string year)
-        //{
-        //    MySqlCommand command = connection.CreateCommand();
-        //    command.CommandText = "Select * FROM sales";
-
-        //    connection.Open();
-
-        //    MySqlDataReader reader = command.ExecuteReader();
-
-        //    IEnumerable<ProductDetails> productDetails = ProductDetailsFromReader(reader);
-        //    connection.Close();
-
-        //    return productDetails;
-        //}
-
-        //public static void SalesInMonth(string month)
-        //{
-
-        //}
-
-        //public static void SumOfSalesInYear(string year)
-        //{
-
-        //}
-
-        //public static void SalesInMonthOfYear(string year, string month)
-        //{
-
-        //}
-
     }
 }
 

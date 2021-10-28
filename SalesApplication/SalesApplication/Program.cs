@@ -16,11 +16,11 @@ namespace SalesApplication
         public enum MenuOptions
 
         {
-            CREATE,
-            READ_ALL,
-            READ_OPTIONS,
-            UPDATE,
-            DELETE,
+            DATA_ENTRY,
+            VIEW_ALL_SALES,
+            SALES_REPORTS,
+            UPDATE_SALE_INFO,
+            DELETE_SALE_INFO,
             QUIT
         }
         public static void PrintMenu()
@@ -56,23 +56,23 @@ namespace SalesApplication
 
                 switch (menuOptions)
                 {
-                    case MenuOptions.CREATE:
+                    case MenuOptions.DATA_ENTRY:
                         productController.Create(connection);
                         break;
 
-                    case MenuOptions.READ_ALL:
+                    case MenuOptions.VIEW_ALL_SALES:
                         productController.Read(connection);
                         break;
 
-                    case MenuOptions.READ_OPTIONS:
+                    case MenuOptions.SALES_REPORTS:
                         ReadMenu.ReadOptions(connection);
                         break;
 
-                    case MenuOptions.UPDATE:
+                    case MenuOptions.UPDATE_SALE_INFO:
                         productController.Update(connection);
                         break;
 
-                    case MenuOptions.DELETE:
+                    case MenuOptions.DELETE_SALE_INFO:
                         productController.Delete(connection);
                         break;
 
