@@ -8,8 +8,7 @@ namespace SalesApplication
 {
     class ProductServices
     {
-        private IList<ProductDetails> productDetails;
-        private static int counter = 0;
+       
 
         private readonly SalesRepository salesRepository;
 

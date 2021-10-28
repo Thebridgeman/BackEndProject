@@ -66,8 +66,10 @@ namespace SalesApplication
             ProductDetails product = new ProductDetails();
 
             product.ID = (int)command.LastInsertedId;
-
             product.Name = toCreate.Name;
+            product.SaleQuantity = toCreate.SaleQuantity;
+            product.IndividualItemPrice = toCreate.IndividualItemPrice;
+            product.datetime = toCreate.datetime;
 
             return product;
         }
@@ -95,9 +97,9 @@ namespace SalesApplication
 
                 int quantity = reader.GetFieldValue<int>("sale_quantity");
 
-                float price = reader.GetFieldValue<float>("item_price");
+                decimal price = reader.GetFieldValue<decimal>("item_price");
 
-                DateTime saledate = reader.GetFieldValue<DateTime>("saledate");
+                DateTime saledate = reader.GetFieldValue<DateTime>("sale_date");
 
 
                 
@@ -107,6 +109,16 @@ namespace SalesApplication
                 products.Add(product);
             }
             return products;
+        }
+
+        public void Update(long id, string fieldToUpdate, string valueToUpdate)
+        {
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = $"UPDATE sales SET {fieldToUpdate} = {valueToUpdate} WHERE sale_id={id}";
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
         }
 
         // Read Functions

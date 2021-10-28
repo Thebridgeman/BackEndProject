@@ -44,7 +44,7 @@ namespace SalesApplication
                     string yr = Console.ReadLine();
                     Console.WriteLine("Enter a month");
                     string mnth = Console.ReadLine();
-                    ReadFunctionsController.SalesInMonthOfYear(connection,yr, mnth);
+                    ReadFunctionsController.SalesInMonthOfYear(connection, yr, mnth);
 
                     break;
             }

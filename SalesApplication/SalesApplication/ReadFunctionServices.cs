@@ -8,8 +8,7 @@ namespace SalesApplication
 {
     class ReadFunctionServices
     {
-        private IList<ProductDetails> productDetails;
-        private static int counter = 0;
+       
 
         private readonly ReadRepository readRepository;
 

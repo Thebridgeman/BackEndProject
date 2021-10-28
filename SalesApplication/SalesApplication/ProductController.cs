@@ -26,7 +26,7 @@ namespace SalesApplication
             int quantity = Int32.Parse(Console.ReadLine());
 
             Console.WriteLine("Individual Item Price");
-            float price = float.Parse(Console.ReadLine());
+            decimal price = decimal.Parse(Console.ReadLine());
 
             DateTime dateTime = DateTime.Now;
 
@@ -64,7 +64,21 @@ namespace SalesApplication
         }
         internal static void Update(MySqlConnection connection)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Enter product id");
+            Console.Write("> ");
+            string input = Console.ReadLine();
+            bool b = long.TryParse(input, out long id);
+
+            if (b)
+            {
+                Console.WriteLine("Enter field to update");
+                Console.WriteLine("product_name, sale_quantity, item_price");
+                string fieldToUpdate = Console.ReadLine();
+                Console.WriteLine("Enter new value");
+                string valueToUpdate = Console.ReadLine();
+                SalesRepository SR = new SalesRepository(connection);
+                SR.Update(id, fieldToUpdate, valueToUpdate);
+            }
         }
     }
 }
